@@ -1,7 +1,39 @@
 .parent{
-   border-radius: 20px;
-   width: 40%;
-   background-color: white;
+   border-radius: 15px;
+   width: 75%;
+   background-color: #ddd9d2;
    margin-top: 1.5rem;
-   height: 3rem;
+   /* height: 3rem; */
+   padding: 1rem;
+   display: flex;
+   justify-content: space-between;
+}
+
+.bookNowButton{
+   border: 1px solid black;
+   background-color: #ddd9d2;
+   padding-left: 3rem;
+   padding-right: 3rem;
+   font-family: 'Poppins';
+   font-weight: 600;
+   font-size: 1rem;
+   background: linear-gradient(to left, #ddd9d2 50%, #243486 50%) right;
+    background-size: 200%;
+    transition: 500ms ease-in-out;
+    cursor: pointer;
+}
+
+.bookNowButton:hover{
+   background-position: left;
+   color: white;
+}
+
+@keyframes buttonFiller {
+   0%{
+
+   }
+
+   100%{
+
+   }
 }

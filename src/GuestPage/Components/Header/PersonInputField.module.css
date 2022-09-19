@@ -1,0 +1,33 @@
+.parent{
+   height: 100%;
+}
+
+.label {
+	display: block;
+	width: fit-content;
+	font-family: "Roboto";
+	font-size: 0.9rem;
+	font-weight: 300;
+	margin-bottom: 0.2rem;
+	margin-left: 0.5rem;
+	letter-spacing: 0.2rem;
+}
+
+.inputField{
+   background-color: #ddd9d2;
+   border: 1px solid #4d4d4d;
+   border-radius: 10px;
+   display: inline-block;
+   height: 40%;
+   color: #4d4d4d;
+   font-family: "Inter";
+	font-weight: 600;
+	font-size: 0.9rem;
+   padding: 0.4rem;
+   width: 10rem;
+}
+
+.inputField:hover{
+   border: 2px solid black;
+   margin: -1px;
+}
