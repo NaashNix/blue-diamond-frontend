@@ -1,10 +1,10 @@
 import React from 'react';
-import MainLogo from './Components/MainLogo';
+import MenuBar from './Components/MenuBar';
 
 const GuestPage = (props) => {
    return (
       <div>
-         <MainLogo />
+         <MenuBar />
       </div>
    );
 }
