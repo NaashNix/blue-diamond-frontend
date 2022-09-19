@@ -1,0 +1,9 @@
+.parent{
+   height: 80.2vh;
+   overflow: hidden;
+   position: relative;
+}
+
+.parent img{
+   height: 100%;
+}
