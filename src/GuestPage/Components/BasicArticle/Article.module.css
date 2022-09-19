@@ -1,0 +1,20 @@
+.parent{
+   width: 100%;
+   text-align: center;
+   padding: 3rem 0;
+}
+
+.heading{
+   display: block;
+   color: #a89b83;
+   font-family: 'Alex brush';
+   font-size: 4rem;
+}
+
+.subHeading{
+   font-family: 'Roboto';
+   font-weight: 300;
+   color: #4d4d4d;
+   font-size: 1.5rem;
+   width: 60%;
+}
