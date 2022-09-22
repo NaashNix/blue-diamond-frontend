@@ -1,13 +1,34 @@
+
 .parent{
    display: flex;
    flex-direction: column;
    justify-content: center;
    align-items: center;
    margin: 5rem auto;
-   border: 1px solid red;
+   border: 1px solid #a69c8a;
    border-radius: 15px;
    width: fit-content;
    padding: 3rem;
+}
+
+img{
+   margin-bottom: 0.5rem;
+}
+
+.loginButton{
+   background-color:#243486 ;
+   color: white;
+   font-family: 'Inter';
+   font-size: 1rem;
+   padding: 0.5rem;
+   margin-bottom: 1rem;
+   border: none;
+   border-radius: 5px;
+   cursor: pointer;
+}
+
+.loginButton:hover{
+   background-color: #374694;
 }
 
 .google_sign{

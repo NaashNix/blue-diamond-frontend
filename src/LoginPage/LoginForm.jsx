@@ -1,11 +1,38 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import InputField from "./InputField";
 import classes from "./LoginForm.module.css";
-import jwt_decode from 'jwt-decode';
+import jwt_decode from "jwt-decode";
 
 const LoginForm = () => {
-
 	const [user, setUser] = useState({});
+	const [error, setError] = useState(null);
+	const [isLoading, setIsLoading] = useState(false);
+
+	const loginMainMethod = useCallback(async () => {
+		setIsLoading(true);
+		setError(null);
+
+		let username = "naashnix";
+
+		try {
+			const response = await fetch(
+				`http://localhost:8080/app/api/login?username=${username}`
+			);
+
+			if (!response.ok) {
+				throw new Error("Something went wrong!");
+			}
+
+			const loggedData = await response.json();
+			console.log(loggedData);
+
+		} catch (error) {
+			setError(error);
+		}
+
+		setIsLoading(false);
+
+	});
 
 	function handleCallBackResponse(response) {
 		console.log("Encoded JWT ID token : " + response.credential);
@@ -21,7 +48,6 @@ const LoginForm = () => {
 	}
 
 	useEffect(() => {
-
 		/*Global Google*/
 		window.google.accounts.id.initialize({
 			client_id:
@@ -40,9 +66,8 @@ const LoginForm = () => {
 		window.google.accounts.id.prompt();
 	}, []);
 
-
 	return (
-		<div className={classes.parent} >
+		<div className={classes.parent}>
 			<img
 				src={require("/media/naashnix/Projects/IJSE/Advanced API/Spring Boot/Blue Diamond Web/blue-diamond/src/assets/imgs/icons8-male-user-96.png")}
 				alt="Male User Icon"
@@ -53,9 +78,10 @@ const LoginForm = () => {
 			<InputField id={"passwordField"} type={"password"}>
 				PASSWORD
 			</InputField>
-			<div id="google-sign" className={classes.google_sign} >
-				
-			</div>
+
+			<button className={classes.loginButton}>LOGIN</button>
+
+			<div id="google-sign" className={classes.google_sign}></div>
 		</div>
 	);
 };
