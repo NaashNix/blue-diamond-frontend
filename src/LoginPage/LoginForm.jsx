@@ -78,10 +78,13 @@ const LoginForm = () => {
 			<InputField id={"passwordField"} type={"password"}>
 				PASSWORD
 			</InputField>
-
-			<button className={classes.loginButton}>LOGIN</button>
+			
+			<button onClick={ loginMainMethod } className={classes.loginButton}>LOGIN</button>
 
 			<div id="google-sign" className={classes.google_sign}></div>
+
+			{isLoading && <p>Loading...</p>}
+
 		</div>
 	);
 };
