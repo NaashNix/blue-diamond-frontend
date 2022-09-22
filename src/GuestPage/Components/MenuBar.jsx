@@ -3,11 +3,11 @@ import classes from "./MenuBar.module.css";
 import MainLogo from './MainLogo';
 import MenuOptions from "./MenuOptions";
 
-const MenuBar = () => {
+const MenuBar = (props) => {
 	return <div className={classes.parent} >
       <MainLogo />
       <span>HOTLINE : +(94)702053777</span>
-      <MenuOptions />
+      <MenuOptions onClick={props.onClick} />
    </div>;
 };
 

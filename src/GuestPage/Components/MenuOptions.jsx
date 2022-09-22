@@ -1,13 +1,18 @@
 import React from 'react';
 import classes from './MenuOption.module.css';
 
-const MenuOptions = () => {
+const MenuOptions = (props) => {
+
+	const loginButtonClicked = () => {
+		console.log('Login Button Clicked');
+	}
+
    return (
 		<div className={classes.parent}>
-			<a href="" className={classes.links}>
+			<a className={classes.links}>
 				Signup
 			</a>
-			<a href="" className={classes.links}>
+			<a className={classes.links} onClick={props.onClick} >
 				Login
 			</a>
 			<a href="" className={classes['links','bookNowButton']}>

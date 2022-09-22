@@ -1,6 +1,5 @@
 import React from 'react';
 import classes from './Article.module.css';
-import TitlebarImageList from './ImageTiles';
 
 
 const Article = () => {
