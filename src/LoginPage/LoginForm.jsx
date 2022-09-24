@@ -59,16 +59,14 @@ const LoginForm = () => {
 		setUser(userObject);
 		sessionStorage.setItem('availability_blue_diamond', 1);
 		const userData = {
-			firstName: response.credential.given_name,
-			secondName: response.credential.family_name,
-			email: response.credential.email,
-			userName: response.credential.sub
+			firstName: userObject.given_name,
+			secondName: userObject.family_name,
+			email : userObject.email,
+			username : userObject.sub
 		};
 		
-		sessionStorage.setItem("userData_blue_diamond", JSON.stringify(userData));
+		sessionStorage.setItem("userData", JSON.stringify(userData));
 		history.push("/booking");
-
-
 
 	}
 

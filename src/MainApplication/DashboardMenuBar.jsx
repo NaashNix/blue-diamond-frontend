@@ -6,14 +6,13 @@ import MenuBarOptions from './MenuBarOptions';
 
 const DashboardMenuBar = () => {
 
-	const userData = JSON.parse(sessionStorage.userData_blue_diamond);
 
-
+	var userData = JSON.parse(sessionStorage.userData);
 
    return (
 		<div className={classes.parent}>
 			<MainLogo />
-			<span>{userData.firstName}</span>
+			<span> Ayubowan! {userData.firstName} {userData.secondName} </span>
 			<MenuBarOptions />
 		</div>
 	); 
