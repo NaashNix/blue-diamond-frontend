@@ -43,7 +43,7 @@ const LoginForm = () => {
 
 			if (loggedData.data === "user") {
 				console.log("redirect");
-				history.push("/booking");
+				history.push("/"); 
 			}
 		} catch (error) {
 			setError(error);
@@ -66,7 +66,7 @@ const LoginForm = () => {
 		};
 		
 		sessionStorage.setItem("userData", JSON.stringify(userData));
-		history.push("/booking");
+		history.push("/");
 
 	}
 
