@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+import DashboardMenuBar from './DashboardMenuBar';
 
 const BookNow = () => {
    return (
-      <div>
-         <h1>Order Booked!</h1>
-      </div>
+      <Fragment>
+         <DashboardMenuBar />
+         
+      </Fragment>
    );
 }
 

@@ -9,13 +9,13 @@ const GuestPage = (props) => {
 	const history = useHistory();
 	const routeChange = () =>{
 		let path = 	'/login'
-		history.push(path);
+		history.push(path); 
 	}
 
    return (
 		<div>
 
-			<MenuBar onClick={routeChange} />
+			<MenuBar onClick={routeChange}  />
 			<Header />
 			<Article />
 		</div>

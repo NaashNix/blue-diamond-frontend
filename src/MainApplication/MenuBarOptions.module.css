@@ -1,0 +1,39 @@
+.parent{
+   display: flex;
+   flex-direction: row;
+
+}
+
+.links{
+   margin: auto 0.5rem;
+   text-decoration: none;
+   color: black;
+   font-family: 'Inter';
+   font-weight: 400;
+   font-size: 1rem;
+   cursor: pointer;
+}
+
+.bookNowButton{
+   margin-right: 0.5rem;
+   color: black;
+   margin-left: 0.5rem;
+   border: 2px solid black;
+   padding: 0.3rem;
+   text-decoration: none;
+   font-family: 'Inter',sans-serif;
+   font-weight: 600;
+}
+
+.bookNowButton:hover,
+.bookNowButton:focus{
+   color: white;
+   background-color: black;
+   transition: 400ms ease-in-out;
+}
+
+.links:hover,
+.links:focus{
+   color: #005f73;
+   transition: all 300ms ease-in-out;
+}
