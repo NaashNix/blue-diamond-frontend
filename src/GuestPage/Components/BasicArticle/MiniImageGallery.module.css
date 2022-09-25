@@ -1,0 +1,23 @@
+.parent{
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+   margin: 2rem 4rem;
+}
+
+.frameParent{
+   width: 27vw;
+   height: 27vw;
+   overflow: hidden;
+   margin: auto 1rem;
+}
+
+.frame{
+   width: 150%;   
+   transition: 300ms;
+}
+
+.frame:hover{
+   transform: scale(1.1);
+   transition: all 300ms ease-in-out;
+}

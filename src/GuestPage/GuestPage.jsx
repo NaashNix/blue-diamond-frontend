@@ -4,6 +4,8 @@ import Header from "./Components/Header/Header";
 import MenuBar from "./Components/MenuBar";
 import { useHistory } from "react-router-dom";
 import DashboardMenuBar from "../MainApplication/DashboardMenuBar";
+import MiniImageGallery from "./Components/BasicArticle/MiniImageGallery";
+import Footer from "./Components/Footer/Footer";
 
 const GuestPage = (props) => {
 	const [userLoggedIn, setUserLoggedIn] = useState(false);
@@ -26,6 +28,8 @@ const GuestPage = (props) => {
 			{userLoggedIn && <DashboardMenuBar />}
 			<Header />
 			<Article />
+			<MiniImageGallery />
+			<Footer />
 		</div>
 	);
 };

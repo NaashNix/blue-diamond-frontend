@@ -1,0 +1,21 @@
+.parent{
+   position: relative;
+}
+
+.floatingContent{
+   position: absolute;
+   z-index: 10;
+   margin: 2rem 5rem;
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+}
+
+.logo{
+   width: 25%;
+   display: inline-block;
+}
+
+.childArticle{
+
+}
