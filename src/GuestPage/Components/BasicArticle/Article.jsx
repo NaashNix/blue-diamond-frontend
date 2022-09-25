@@ -2,13 +2,12 @@ import React from 'react';
 import classes from './Article.module.css';
 
 
-const Article = () => {
+const Article = (props) => {
    return (
 		<div className={classes.parent}>
-			<span className={classes.heading} >Charming European-Style Art Deco</span>
+			<span className={classes.heading} >{props.heading}</span>
 			<span className={classes.subHeading} >
-				Open the door to a warm and welcoming variety of rooms: single
-				queens, double or a suite. We will be delighted to accommodate you.
+				{props.description}
 			</span>
          
 		</div>

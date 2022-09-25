@@ -32,3 +32,13 @@
    width: 50%;
    height: 20rem;
 }
+
+.fade_in {
+    transition: opacity 1s ease;
+    color: red;
+}
+
+.fade_out {
+    opacity: 0;
+    transition: opacity 1s ease;
+}

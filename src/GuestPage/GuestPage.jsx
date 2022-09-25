@@ -25,14 +25,21 @@ const GuestPage = (props) => {
 		}
 	}, [])
 
+	let topArticleHeading = 'Charming European-Style Art Deco';
+	let topArticleSubHeading = 'Open the door to a warm and welcoming variety of rooms: single queens, double or a suite. We will be delighted to accommodate you.'
+	let secondArticleHeading = "Explore Island Stories";
+	let secondArticleSubHeading =
+		"Each place, and each smile in Sri Lanka has a story to tell. We have so much to share with you, so come along to our island in paradise!";
+
 	return (
 		<div>
 			{!userLoggedIn && <MenuBar onClick={routeChange} />}
 			{userLoggedIn && <DashboardMenuBar />}
 			<Header />
-			<Article />
+			<Article heading={topArticleHeading} description={topArticleSubHeading} />
 			<MiniImageGallery />
 			<TouristPlaces />
+			<Article heading={secondArticleHeading} description={secondArticleSubHeading} />
 			<Destinations />
 			<VideoShower />
 			<Footer />
