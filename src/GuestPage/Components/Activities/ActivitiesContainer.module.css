@@ -1,0 +1,26 @@
+.parent{
+   width: 100%;
+   height: 10rem;
+   background-color: #a69c8a;
+   position: relative;
+}
+
+.parent::after,
+.parent::before{
+   content: '';
+   position: absolute;
+   width: 30px;
+   height: 30px;
+   background-color: white;
+   top: -1.4rem;
+}
+
+.parent::after{
+   right: 50%;
+   transform: skew(0,30deg);
+}
+
+.parent::before{
+   left: 50%;
+   transform: skew(0,-30deg);
+}

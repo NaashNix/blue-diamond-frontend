@@ -1,0 +1,32 @@
+.parent{
+   padding: 1rem;
+   /* background: rgba(0, 0, 0, 0.4); */
+   background: rgba(255, 255, 255, 0.4);
+   position: absolute;
+   width: 20rem;
+   right: 10rem;
+   top: 0;
+   bottom: 0;
+   margin: auto;
+}
+
+.heading{
+   display: block;
+   font-family: 'Sofia';
+   font-size: 2rem;
+   color: black;
+   margin-bottom: 1rem;
+}
+
+.subHeading{
+   color: black;
+   font-family: 'Inter';
+   font-weight: 300;
+   font-size: 1.2rem;
+   line-height: 1.2;
+}
+
+.lineArt{
+   width: 100%;
+}
+
