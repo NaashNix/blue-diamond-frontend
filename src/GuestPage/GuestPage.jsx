@@ -7,7 +7,7 @@ import DashboardMenuBar from "../MainApplication/DashboardMenuBar";
 import MiniImageGallery from "./Components/BasicArticle/MiniImageGallery";
 import Footer from "./Components/Footer/Footer";
 import Destinations from "./Components/MidArticle/Destinations";
-import ActivitiesContainer from "./Components/Activities/ActivitiesContainer";
+import TouristPlaces from "./Components/Activities/TouristPlaces";
 import VideoShower from "./Components/VideoContainer/VideoShower";
 
 const GuestPage = (props) => {
@@ -32,7 +32,7 @@ const GuestPage = (props) => {
 			<Header />
 			<Article />
 			<MiniImageGallery />
-			<ActivitiesContainer />
+			<TouristPlaces />
 			<Destinations />
 			<VideoShower />
 			<Footer />

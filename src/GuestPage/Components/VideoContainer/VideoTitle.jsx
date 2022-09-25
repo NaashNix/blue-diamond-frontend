@@ -6,7 +6,6 @@ const VideoTitle = () => {
    return (
 		<div className={classes.parent}>
 			<span className={classes.heading} >Unwind at your pace.</span>
-         <div></div>
 			<span className={classes.subHeading} >
 				No matter where you choose to stay, we make sure you enjoy every
 				minute of it. Be it the ocean, the forest or even the city, you’ll

@@ -1,0 +1,35 @@
+.parent{
+   padding: 3rem;
+   width: 50%;
+   background-image: linear-gradient(to right, #8c1539,#b87d00, #01544e);
+}
+
+.heading{
+   font-family: 'Seaweed Script';
+   color: white;
+   font-size: 3rem;
+   text-shadow: rgba(0,0,0,0.4) -4px 0 20px;
+}
+
+.subHeading{
+   color: white;
+   font-family: 'Inter';
+   font-weight: 300;
+   font-size: 1.1rem;
+}
+
+.button{
+   background: transparent;
+   border: 1px solid white;
+   padding: 0.5rem;
+   color: white;
+   border-radius: 10px;
+   cursor: pointer;
+   transition: all 400ms ease-in-out;
+}
+
+.button:hover{
+   background-color: white;
+   color: black;
+   transition: 400ms ease-in-out ;
+}
