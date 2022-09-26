@@ -19,12 +19,13 @@ const LoginForm = () => {
 	}, []);
 
 	const loginMainMethod = useCallback(async () => {
-		const enteredData = {
+		const enteredData = await{
 			username: usernameRef.current.value,
 			password: passwordRef.current.value,
 		};
 		
-		console.log(enteredData);
+		
+		
 		setIsLoading(true);
 		setError(null);
 

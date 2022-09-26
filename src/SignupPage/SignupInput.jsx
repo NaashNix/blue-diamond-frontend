@@ -1,11 +1,23 @@
-import React from "react";
+import React, { useRef, useImperativeHandle } from "react";
 import classes from "./SignupInput.module.css";
 import tick from '/media/naashnix/Projects/IJSE/Advanced API/Spring Boot/Blue Diamond Web/blue-diamond/src/assets/icons/tick.png';
 import cross from '/media/naashnix/Projects/IJSE/Advanced API/Spring Boot/Blue Diamond Web/blue-diamond/src/assets/icons/cross.png';
 
-const SignupInput = (props) => {
+const SignupInput = React.forwardRef((props,ref) => {
 
+  const inputRef = useRef();
 
+  const activate = () => {
+    
+		inputRef.current.focus();
+  };
+
+  useImperativeHandle(ref, () => {
+		return {
+			focus: activate,
+			value: inputRef.current.value
+		};
+  });
 
 	return (
 		<div className={classes.parent} >
@@ -17,6 +29,8 @@ const SignupInput = (props) => {
             value={props.value}
             onChange={props.onChange}
             placeholder={props.placeholder}
+            ref = {inputRef}
+            onBlur={props.onBlur}
           />
       <div className={classes.verifyingBadge} >
         { props.isValid && <img className={classes.verifyingBadgeIcon} src={tick} alt="Tick" /> }
@@ -24,6 +38,6 @@ const SignupInput = (props) => {
       </div>
 		</div>
 	);
-};
+});
 
 export default SignupInput;
