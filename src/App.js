@@ -4,6 +4,7 @@ import GuestPage from './GuestPage/GuestPage';
 import LoginPage from './LoginPage/LoginPage';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import BookNow from './MainApplication/BookNow';
+import Signup from './SignupPage/Signup';
 
 function App() {
 
@@ -19,6 +20,9 @@ function App() {
           </Route>
           <Route path="/booking">
             <BookNow />
+          </Route>
+          <Route path="/signup">
+            <Signup />
           </Route>
         </Switch>
       </div>

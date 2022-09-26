@@ -114,6 +114,7 @@ const LoginForm = () => {
 			<div id="google-sign" className={classes.google_sign}></div>
 
 			{isLoading && <p>Loading...</p>}
+			
 		</div>
 	);
 };

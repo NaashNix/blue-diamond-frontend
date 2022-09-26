@@ -13,14 +13,8 @@ import VideoShower from "./Components/VideoContainer/VideoShower";
 const GuestPage = (props) => {
 	const [userLoggedIn, setUserLoggedIn] = useState(false);
 
-	const history = useHistory();
-	const routeChange = () => {
-		let path = "/login";
-		history.push(path);
-	};
-
 	useEffect(() => {
-		if (sessionStorage.getItem("availability_blue_diamond") == "1") {
+		if (sessionStorage.getItem("availability_blue_diamond") === "1") {
 			setUserLoggedIn(true);
 		}
 	}, [])
@@ -33,7 +27,7 @@ const GuestPage = (props) => {
 
 	return (
 		<div>
-			{!userLoggedIn && <MenuBar onClick={routeChange} />}
+			{!userLoggedIn && <MenuBar />}
 			{userLoggedIn && <DashboardMenuBar />}
 			<Header />
 			<Article heading={topArticleHeading} description={topArticleSubHeading} />

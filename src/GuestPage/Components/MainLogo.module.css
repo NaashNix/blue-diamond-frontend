@@ -6,3 +6,8 @@
    width: 80%;
    margin: 0.4rem 0.5rem;
 }
+
+.mainLogo:hover,
+.mainLogo:focus{
+   cursor: pointer;
+}

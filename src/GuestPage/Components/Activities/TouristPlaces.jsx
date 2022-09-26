@@ -32,38 +32,48 @@ const data = [
 
 const TouristPlaces = () => {
 	const [title, setTitle] = useState("");
-	const [image,setImage] = useState(image1);
+	const [image, setImage] = useState(image1);
 	const [description, setDescription] = useState("");
-	const [link, setLink] = useState('');
+	const [link, setLink] = useState("");
+	const [isHover, setIsHover] = useState(false);
 
 	useEffect(() => {
 		let index = 0;
 
 		const interval = setInterval(() => {
-			if (index === data.length) {
-				index = 0;
+			if (isHover === false) {
+				if (index === data.length) {
+					index = 0;
+				}
+				updatingProcess(index);
+				index = index + 1;
 			}
-			updatingProcess(index);
-			index = index + 1;
-		}, 3500);
+		}, 2500);
 
 		return () => {
 			console.log("interval cleared");
 			clearInterval(interval);
 		};
-	}, []);
+	}, [isHover]);
 
+	useEffect(() => {
+		console.log(isHover);
+	}, [isHover]);
 
 	function updatingProcess(point) {
 		console.log(point);
 		setTitle(data[point].title);
 		setImage(data[point].image);
 		setDescription(data[point].description);
-		setLink(data[point].link)
+		setLink(data[point].link);
 	}
 
 	return (
-		<div className={classes.parent}>
+		<div
+			className={classes.parent}
+			onMouseEnter={() => setIsHover(true)}
+			onMouseLeave={() => setIsHover(false)}
+		>
 			<TouristPlacesDescription description={description} link={link} />
 			<ImageContainer title={title} source={image} />
 		</div>

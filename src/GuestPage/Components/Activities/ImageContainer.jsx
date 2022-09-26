@@ -5,6 +5,7 @@ const ImageContainer = (props) => {
 
    return (
 		<div className={classes.parent} >
+			
 			<span className={classes.title}  >{props.title}</span>
 			<img className={classes.image}
 				src={props.source}

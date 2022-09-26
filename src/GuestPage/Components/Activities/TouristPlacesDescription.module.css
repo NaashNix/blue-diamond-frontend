@@ -33,3 +33,16 @@
    color: black;
    transition: 400ms ease-in-out ;
 }
+
+.notification{
+	background-color: white;
+	color: black;
+	font-family: 'Inter';
+	z-index: 3;
+	position: absolute;
+	padding: 0.3rem;
+	font-size: 0.7rem;
+	border-radius: 15px;
+	left: 0.5rem;
+	bottom: 0.5rem;
+}

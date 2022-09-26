@@ -1,25 +1,34 @@
-import React from 'react';
-import classes from './MenuOption.module.css';
+import React from "react";
+import { useHistory } from "react-router-dom";
+import classes from "./MenuOption.module.css";
 
-const MenuOptions = (props) => {
+const MenuOptions = () => {
+	
 
-	const loginButtonClicked = () => {
-		console.log('Login Button Clicked');
+	const history = useHistory();
+
+	const signupHandler = () => {
+		history.push('/signup');
 	}
 
-   return (
+	const loginHandler = () => {
+		history.push('/login')
+	};
+
+
+	return (
 		<div className={classes.parent}>
-			<a className={classes.links}>
+			<a className={classes.links} onClick={signupHandler}>
 				Signup
 			</a>
-			<a className={classes.links} onClick={props.onClick} >
+			<a className={classes.links} onClick={loginHandler}>
 				Login
 			</a>
-			<a href="" className={classes['links','bookNowButton']}>
+			<a href="" className={classes[("links", "bookNowButton")]}>
 				BOOK NOW
 			</a>
 		</div>
 	);
-}
+};
 
 export default MenuOptions;
