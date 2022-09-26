@@ -10,7 +10,7 @@ const Signup = () => {
 	const [data,setData] = useState('');
 
 	const childToParent = (childData) => {
-		console.log(childData);
+			console.log(childData);
 	}
 
 

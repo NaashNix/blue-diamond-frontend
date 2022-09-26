@@ -1,22 +1,21 @@
-import React, { useRef, useReducer, useState } from "react";
+import React, { useRef, useReducer, useState, useEffect } from "react";
 import classes from "./SignupForm.module.css";
 import SignupInput from "./SignupInput";
 import backgroundImage from "/media/naashnix/Projects/IJSE/Advanced API/Spring Boot/Blue Diamond Web/blue-diamond/src/assets/imgs/SriLanka5.jpg";
 
 const firstNameReducer = (state, action) => {
 	if (action.type === "USER_INPUT") {
-		console.log("user inputs triggers");
 
 		return {
 			value: action.val,
-			isValid: action.val !== '',
+			isValid: action.val !== "",
 		};
 	}
 
 	if (action.type === "INPUT_BLUR") {
 		return {
 			value: state.value,
-			isValid: state.value!=='',
+			isValid: state.value !== "",
 		};
 	}
 
@@ -28,18 +27,17 @@ const firstNameReducer = (state, action) => {
 
 const secondNameReducer = (state, action) => {
 	if (action.type === "USER_INPUT") {
-		console.log("user inputs triggers");
 
 		return {
 			value: action.val,
-			isValid: action.val.includes("@"),
+			isValid: action.val !== '',
 		};
 	}
 
 	if (action.type === "INPUT_BLUR") {
 		return {
 			value: state.value,
-			isValid: state.value.includes("@"),
+			isValid: state.value !== '',
 		};
 	}
 
@@ -49,10 +47,8 @@ const secondNameReducer = (state, action) => {
 	};
 };
 
-
 const emailReducer = (state, action) => {
 	if (action.type === "USER_INPUT") {
-		console.log("user inputs triggers");
 
 		return {
 			value: action.val,
@@ -74,20 +70,25 @@ const emailReducer = (state, action) => {
 };
 
 const nicNumberReducer = (state, action) => {
+
+   var regex = new RegExp("^([0-9]{12})$");
+
 	if (action.type === "USER_INPUT") {
-		console.log("user inputs triggers");
 
 		return {
 			value: action.val,
-			isValid: action.val.includes("@"),
+			isValid: regex.test(action.val) ,
 		};
 	}
 
 	if (action.type === "INPUT_BLUR") {
+      
+
 		return {
 			value: state.value,
-			isValid: true,
+			isValid: regex.test(state.value),
 		};
+      
 	}
 
 	return {
@@ -96,12 +97,14 @@ const nicNumberReducer = (state, action) => {
 	};
 };
 
-
 const SignupForm = ({ childToParent }) => {
 	const firstNameRef = useRef();
 	const secondNameRef = useRef();
 	const emailRef = useRef();
 	const nicNumberRef = useRef();
+
+   const [buttonState, setButtonState] = useState(true);
+
 
 	const [firstNameState, dispatchFirstName] = useReducer(firstNameReducer, {
 		value: "",
@@ -113,39 +116,62 @@ const SignupForm = ({ childToParent }) => {
 		isValid: null,
 	});
 
-   const [emailState, dispatchEmail] = useReducer(emailReducer, {
+	const [emailState, dispatchEmail] = useReducer(emailReducer, {
 		value: "",
 		isValid: null,
 	});
 
-   const [nicNumberState, dispatchNicNumber] = useReducer(nicNumberReducer, {
+	const [nicNumberState, dispatchNicNumber] = useReducer(nicNumberReducer, {
 		value: "",
 		isValid: null,
 	});
 
-   const validateFirstName = () => {
+   useEffect(() => {
+		setButtonState(
+			!(firstNameState.isValid === true &&
+				secondNameState.isValid === true &&
+				emailState.isValid === true &&
+				nicNumberState.isValid === true
+      ));
+
+      
+	}, [firstNameState, secondNameState, emailState, nicNumberState]);
+
+
+	const validateFirstName = () => {
 		dispatchFirstName({ type: "INPUT_BLUR" });
+	};
+
+	const validateSecondName = () => {
+		dispatchSecondName({ type: "INPUT_BLUR" });
+	};
+
+	const validateEmail = () => {
+		dispatchEmail({ type: "INPUT_BLUR" });
+	};
+
+	const validateNicNumber = () => {
+		dispatchNicNumber({ type: "INPUT_BLUR" });
 	};
 
 	const firstNameChangeHandler = (event) => {
 		dispatchFirstName({ type: "USER_INPUT", val: event.target.value });
 	};
 
-   const secondNameChangeHandler = (event) => {
+	const secondNameChangeHandler = (event) => {
 		dispatchSecondName({ type: "USER_INPUT", val: event.target.value });
 	};
 
-   const emailChangeHandler = (event) => {
+	const emailChangeHandler = (event) => {
 		dispatchEmail({ type: "USER_INPUT", val: event.target.value });
 	};
 
-   const nicNumberChangeHandler = (event) => {
+	const nicNumberChangeHandler = (event) => {
 		dispatchNicNumber({ type: "USER_INPUT", val: event.target.value });
 	};
 
-
-
-	const submitHandler = async () => {
+	const submitHandler = async (e) => {
+      e.preventDefault();
 		const enteredData = {
 			firstName: firstNameRef.current.value,
 			secondName: secondNameRef.current.value,
@@ -173,7 +199,7 @@ const SignupForm = ({ childToParent }) => {
 					isValid={firstNameState.isValid}
 					onChange={firstNameChangeHandler}
 					ref={firstNameRef}
-               onBlur={validateFirstName}
+					onBlur={validateFirstName}
 				/>
 
 				<SignupInput
@@ -185,6 +211,7 @@ const SignupForm = ({ childToParent }) => {
 					onChange={secondNameChangeHandler}
 					value={secondNameState.value}
 					ref={secondNameRef}
+					onBlur={validateSecondName}
 				/>
 
 				<SignupInput
@@ -192,10 +219,11 @@ const SignupForm = ({ childToParent }) => {
 					placeholder={"sample@sample.com"}
 					id={"email"}
 					label={"E-mail Address"}
-               isValid={emailState.isValid}
+					isValid={emailState.isValid}
 					onChange={emailChangeHandler}
 					value={emailState.value}
 					ref={emailRef}
+					onBlur={validateEmail}
 				/>
 
 				<SignupInput
@@ -203,15 +231,16 @@ const SignupForm = ({ childToParent }) => {
 					placeholder={"200129100580"}
 					id={"nicNumber"}
 					label={"NIC Number"}
-               isValid={nicNumberState.isValid}
+					isValid={nicNumberState.isValid}
 					onChange={nicNumberChangeHandler}
 					value={nicNumberState.value}
 					ref={nicNumberRef}
+					onBlur={validateNicNumber}
 				/>
 
-				<a onClick={submitHandler} className={classes.nextButton}>
+				<button onClick={submitHandler} className={classes.nextButton} disabled={buttonState} >
 					Next
-				</a>
+				</button>
 			</form>
 		</div>
 	);
