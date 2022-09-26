@@ -1,0 +1,32 @@
+.parent{
+   margin-bottom: 1rem;
+   position: relative;
+}
+
+.label{
+   display: block;
+   text-align: left;
+   font-family: 'Poppins';
+   font-weight: 400;
+   font-size: 1rem;
+}
+
+.input{
+   padding: 1rem;
+   font-family: 'Inter';
+   font-size: 1rem;
+   font-weight: 300;
+   width: 90%;
+}
+
+.verifyingBadge{
+   position: absolute;
+   height: 2rem;
+   width: 2rem;
+   right: 1rem;
+   top: 2.3rem;
+}
+
+.verifyingBadgeIcon{
+   width: 100%;
+}
