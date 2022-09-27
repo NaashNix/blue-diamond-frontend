@@ -4,32 +4,37 @@ import MenuBar from "../GuestPage/Components/MenuBar";
 import SignupDescription from "./SignupDescription";
 import SignupForm from "./SignupForm";
 import { useState } from "react";
+import SignupFinalResult from "./SignupFinalResult";
 
 const Signup = () => {
+	const [signupState, setSignupState] = useState({
+		status: false,
+		message: false,
+	});
 
-	const [data,setData] = useState('');
+	const childToParent = async (childData) => {
+		console.log(childData);
+		var date = new Date();
+		var today =
+			date.getFullYear() + "-" + date.getMonth() + "-" + date.getDate();
 
-	const childToParent = (childData) => {
-			console.log(childData);
-			var date = new Date();
-			var today = date.getFullYear()+"-"+date.getMonth()+"-"+date.getDate();
+		childData = {
+			...childData,
+			joinedDate: today,
+			username: "naashnix",
+		};
 
-			childData = {
-				...childData,
-				joinedDate : today,
-				username : 'naashnix'
-			}
+		var formBody = [];
+		for (var property in childData) {
+			var encodedKey = encodeURIComponent(property);
+			var encodedValue = encodeURIComponent(childData[property]);
+			formBody.push(encodedKey + "=" + encodedValue);
+		}
 
-			var formBody = [];
-			for (var property in childData) {
-				var encodedKey = encodeURIComponent(property);
-				var encodedValue = encodeURIComponent(childData[property]);
-				formBody.push(encodedKey + "=" + encodedValue);
-			}
+		formBody = formBody.join("&");
 
-			formBody = formBody.join("&");
-
-			fetch("http://localhost:8080/app/api/customer", {
+		/* 	try{
+			const response = await fetch("http://localhost:8080/app/api/customer", {
 				method: "POST",
 				headers: {
 					"Content-Type":
@@ -38,15 +43,32 @@ const Signup = () => {
 				body: formBody,
 			});
 
-	}
+			if(true){
+				setSignupState({
+					status : true,
+					message : true
+				});
+			}
 
-	
-
+		}catch (error) {
+			console.log(error);
+		}
+ */
+		if (true) {
+			setSignupState({
+				status: true,
+				message: true,
+			});
+		}
+	};
 
 	return (
 		<div className={classes.content}>
-			<SignupDescription />
-			<SignupForm childToParent={childToParent} />
+			{!signupState.status && <SignupDescription />}
+			{!signupState.status && <SignupForm childToParent={childToParent} />}
+			{signupState.status && (
+				<SignupFinalResult message={signupState.message} />
+			)}
 		</div>
 	);
 };
