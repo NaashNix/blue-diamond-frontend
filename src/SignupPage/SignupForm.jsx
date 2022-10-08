@@ -97,11 +97,36 @@ const nicNumberReducer = (state, action) => {
 	};
 };
 
-const SignupForm = ({ childToParent }) => {
+const usernameReducer = (state, action) => {
+
+	var regex = new RegExp("^([A-z]{4,10})$");
+
+	if (action.type === "USER_INPUT") {
+		return {
+			value: action.val,
+			isValid: regex.test(action.val),
+		};
+	}
+
+	if (action.type === "INPUT_BLUR") {
+		return {
+			value: state.value,
+			isValid: regex.test(state.value),
+		};
+	}
+
+	return {
+		value: "",
+		isValid: false,
+	};
+};
+
+const SignupForm = ({ childToParent, loading }) => {
 	const firstNameRef = useRef();
 	const secondNameRef = useRef();
 	const emailRef = useRef();
 	const nicNumberRef = useRef();
+	const usernameRef = useRef();
 
    const [buttonState, setButtonState] = useState(true);
 
@@ -126,16 +151,22 @@ const SignupForm = ({ childToParent }) => {
 		isValid: null,
 	});
 
+	const [usernameState, dispatchUsername] = useReducer(usernameReducer, {
+		value: "",
+		isValid: null,
+	});
+
    useEffect(() => {
 		setButtonState(
 			!(firstNameState.isValid === true &&
 				secondNameState.isValid === true &&
 				emailState.isValid === true &&
-				nicNumberState.isValid === true
+				nicNumberState.isValid === true &&
+				usernameState.isValid === true
       ));
 
       
-	}, [firstNameState, secondNameState, emailState, nicNumberState]);
+	}, [firstNameState, secondNameState, emailState, nicNumberState, usernameState]);
 
 
 	const validateFirstName = () => {
@@ -154,6 +185,10 @@ const SignupForm = ({ childToParent }) => {
 		dispatchNicNumber({ type: "INPUT_BLUR" });
 	};
 
+	const validateUsername = () => {
+		dispatchUsername({ type: "INPUT_BLUR" });
+	};
+
 	const firstNameChangeHandler = (event) => {
 		dispatchFirstName({ type: "USER_INPUT", val: event.target.value });
 	};
@@ -170,6 +205,10 @@ const SignupForm = ({ childToParent }) => {
 		dispatchNicNumber({ type: "USER_INPUT", val: event.target.value });
 	};
 
+	const usernameChangeHandler = (event) => {
+		dispatchUsername({ type: "USER_INPUT", val: event.target.value });
+	};
+
 	const submitHandler = async (e) => {
       e.preventDefault();
 		const enteredData = {
@@ -177,6 +216,7 @@ const SignupForm = ({ childToParent }) => {
 			secondName: secondNameRef.current.value,
 			email: emailRef.current.value,
 			nicNumber: nicNumberRef.current.value,
+			username : usernameRef.current.value,
 		};
 
 		childToParent(enteredData);
@@ -238,9 +278,32 @@ const SignupForm = ({ childToParent }) => {
 					onBlur={validateNicNumber}
 				/>
 
-				<button onClick={submitHandler} className={classes.nextButton} disabled={buttonState} >
-					Next
-				</button>
+				<SignupInput
+					type="text"
+					placeholder={"Only A-z characters."}
+					id={"username"}
+					label={"Username"}
+					isValid={usernameState.isValid}
+					onChange={usernameChangeHandler}
+					value={usernameState.value}
+					ref={usernameRef}
+					onBlur={validateUsername}
+				/>
+
+				<div className={classes.signupButtonParent}>
+					{ loading && <img
+						src={require("/media/naashnix/Projects/IJSE/Advanced API/Spring Boot/Blue Diamond Web/blue-diamond/src/assets/imgs/Spin-1s-200px.gif")}
+						alt={"loading icon"}
+					/> }
+					<button
+						
+						onClick={submitHandler}
+						className={classes.nextButton}
+						disabled={buttonState && loading}
+					>
+						Next
+					</button>
+				</div>
 			</form>
 		</div>
 	);

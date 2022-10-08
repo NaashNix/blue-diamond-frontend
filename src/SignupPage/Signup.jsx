@@ -1,18 +1,21 @@
 import React from "react";
 import classes from "./Signup.module.css";
-import MenuBar from "../GuestPage/Components/MenuBar";
 import SignupDescription from "./SignupDescription";
 import SignupForm from "./SignupForm";
 import { useState } from "react";
 import SignupFinalResult from "./SignupFinalResult";
 
 const Signup = () => {
+
+	const [loading, setLoading] = useState(false);
+
 	const [signupState, setSignupState] = useState({
 		status: false,
 		message: false,
 	});
 
 	const childToParent = async (childData) => {
+		setLoading(true);
 		console.log(childData);
 		var date = new Date();
 		var today =
@@ -20,8 +23,7 @@ const Signup = () => {
 
 		childData = {
 			...childData,
-			joinedDate: today,
-			username: "naashnix",
+			joinedDate: today
 		};
 
 		var formBody = [];
@@ -33,7 +35,7 @@ const Signup = () => {
 
 		formBody = formBody.join("&");
 
-		/* 	try{
+		 	try{
 			const response = await fetch("http://localhost:8080/app/api/customer", {
 				method: "POST",
 				headers: {
@@ -41,31 +43,32 @@ const Signup = () => {
 						"application/x-www-form-urlencoded;charset=UTF-8",
 				},
 				body: formBody,
-			});
+			}).then( response => response.json());
 
-			if(true){
+			// let res = JSON.parse(response);
+
+			console.log(response);
+
+			if(response.code === 200){
 				setSignupState({
 					status : true,
 					message : true
 				});
 			}
-
+		
+		
 		}catch (error) {
 			console.log(error);
 		}
- */
-		if (true) {
-			setSignupState({
-				status: true,
-				message: true,
-			});
-		}
+
+		setLoading(false);
+
 	};
 
 	return (
 		<div className={classes.content}>
 			{!signupState.status && <SignupDescription />}
-			{!signupState.status && <SignupForm childToParent={childToParent} />}
+			{!signupState.status && <SignupForm loading={loading} childToParent={childToParent} />}
 			{signupState.status && (
 				<SignupFinalResult message={signupState.message} />
 			)}

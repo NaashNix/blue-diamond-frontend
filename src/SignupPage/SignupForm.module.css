@@ -36,6 +36,7 @@
    font-family: 'Roboto';
    font-size: 1rem;
    cursor: pointer;
+   display: inline;
 }
 
 .nextButton:hover{
@@ -46,3 +47,19 @@
    background-color: #207cbb;
    cursor: not-allowed;
 }
+
+.signupButtonParent{
+   position: relative;
+}
+
+.signupButtonParent img{
+   z-index: 2;
+   position: absolute;
+   display: inline;
+   width: 12%;
+   right: 1rem;
+   top: 0;
+   bottom: 0;
+   margin: auto;
+}
+
