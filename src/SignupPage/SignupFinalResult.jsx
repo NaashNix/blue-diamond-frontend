@@ -9,11 +9,12 @@ import { useHistory } from 'react-router-dom';
 const SignupFinalResult = (props) => {
 
 	const history = useHistory();
+	console.log(props.message);
 
    return (
 		<div className={classes.parent}>
 			<MenuBar />
-			{true && (
+			{props.message && (
 				<div className={classes.subContainer}>
 					<img className={classes.image} src={tick} alt="" />
 					<span className={classes.headLine}>All Done!</span>
@@ -25,7 +26,7 @@ const SignupFinalResult = (props) => {
 				</div>
 			)}
 
-			{false && (
+			{props.message===false && (
 				<div className={classes.errorContainer}>
 					<img className={classes.image} src={cross} alt="" />
 					<span className={classes.headLine}>Something Went Wrong!</span>

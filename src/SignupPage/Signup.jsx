@@ -54,6 +54,11 @@ const Signup = () => {
 					status : true,
 					message : true
 				});
+			}else {
+				setSignupState({
+					status : true,
+					message : false
+				});
 			}
 		
 		
