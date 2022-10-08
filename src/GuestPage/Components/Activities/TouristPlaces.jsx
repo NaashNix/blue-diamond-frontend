@@ -51,17 +51,15 @@ const TouristPlaces = () => {
 		}, 2500);
 
 		return () => {
-			console.log("interval cleared");
+			
 			clearInterval(interval);
 		};
 	}, [isHover]);
 
-	useEffect(() => {
-		console.log(isHover);
-	}, [isHover]);
+	
 
 	function updatingProcess(point) {
-		console.log(point);
+		
 		setTitle(data[point].title);
 		setImage(data[point].image);
 		setDescription(data[point].description);

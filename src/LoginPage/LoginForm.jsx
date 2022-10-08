@@ -9,8 +9,10 @@ const LoginForm = () => {
 	const passwordRef = useRef();
 	const history = useHistory();
 	const [user, setUser] = useState({});
-	const [error, setError] = useState(null);
+	const [error, setError] = useState(false);
 	const [isLoading, setIsLoading] = useState(false);
+	const [username, setUsername] = useState('');
+	const [password, setPassword] = useState('');
 
 	useEffect(() => {
 		if(sessionStorage.getItem('availability_blue_diamond') === '1'){
@@ -19,15 +21,18 @@ const LoginForm = () => {
 	}, []);
 
 	const loginMainMethod = useCallback(async () => {
-		const enteredData = await{
-			username: usernameRef.current.value,
-			password: passwordRef.current.value,
+
+		console.log(username);
+
+		const enteredData = {
+			username: username,
+			password: password
 		};
 		
 		
 		
 		setIsLoading(true);
-		setError(null);
+		setError(false);
 
 		try {
 			const response = await fetch(
@@ -38,20 +43,37 @@ const LoginForm = () => {
 				throw new Error("Something went wrong!");
 			}
 
-			const loggedData = await response.json();
+			const result = await response.json();
 
-			console.log(loggedData);
+			console.log('code : '+result.code);
 
-			if (loggedData.data === "user") {
-				console.log("redirect");
-				history.push("/"); 
+			if (result.code === 202) {
+				setError(false);
+				settingSessionStorage(result);
+				history.push('/');
+				
+			}else if( result.code === 601 ) {
+				setError(true);
 			}
 		} catch (error) {
-			setError(error);
+			setError(true);
 		}
 
 		setIsLoading(false);
 	});
+
+
+	function settingSessionStorage(result){
+		sessionStorage.setItem("availability_blue_diamond", 1);
+		const userData = {
+			firstName: result.data.firstName,
+			secondName: result.data.secondName,
+			email: result.data.email,
+			username: result.data.username,
+		};
+
+		sessionStorage.setItem("userData", JSON.stringify(userData));
+	}
 
 	function handleCallBackResponse(response) {
 		console.log("Encoded JWT ID token : " + response.credential);
@@ -95,16 +117,24 @@ const LoginForm = () => {
 		window.google.accounts.id.prompt();
 	}, []);
 
+	const usernameChangeHandler  = (event) => {
+		setUsername(event.target.value);
+	}
+
+	const passwordChangeHandler = (event) => {
+		setPassword(event.target.value);
+	};
+
 	return (
 		<div className={classes.parent}>
 			<img
 				src={require("/media/naashnix/Projects/IJSE/Advanced API/Spring Boot/Blue Diamond Web/blue-diamond/src/assets/imgs/icons8-male-user-96.png")}
 				alt="Male User Icon"
 			/>
-			<InputField id={"usernameField"} type={"text"} ref={usernameRef}>
+			<InputField id={"usernameField"} type={"text"} ref={usernameRef}  onChange={usernameChangeHandler} >
 				USERNAME
 			</InputField>
-			<InputField id={"passwordField"} type={"password"} ref={passwordRef}>
+			<InputField id={"passwordField"} type={"password"} ref={passwordRef} onChange={passwordChangeHandler} >
 				PASSWORD
 			</InputField>
 
@@ -113,9 +143,9 @@ const LoginForm = () => {
 			</button>
 
 			<div id="google-sign" className={classes.google_sign}></div>
-
+		
 			{isLoading && <p>Loading...</p>}
-			
+			{error && <p>Error occurred.</p> }
 		</div>
 	);
 };

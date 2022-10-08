@@ -23,6 +23,7 @@ const InputField = React.forwardRef((props, ref) => {
 				id={props.id}
 				placeholder={props.children}
 				ref={inputRef}
+				onChange={props.onChange}
 			/>
 		</div>
 	);
