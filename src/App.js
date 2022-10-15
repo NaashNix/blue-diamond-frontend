@@ -5,6 +5,7 @@ import LoginPage from './LoginPage/LoginPage';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import BookNow from './MainApplication/BookNow';
 import Signup from './SignupPage/Signup';
+import ContactUsPage from './ContactUs/ContactUsPage';
 
 function App() {
 
@@ -23,6 +24,9 @@ function App() {
           </Route>
           <Route path="/signup">
             <Signup />
+          </Route>
+          <Route path="/contact-us">
+            <ContactUsPage />
           </Route>
         </Switch>
       </div>

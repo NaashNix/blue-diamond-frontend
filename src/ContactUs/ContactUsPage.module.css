@@ -1,0 +1,90 @@
+.mainParent{
+   background-color: #ddd9d2;
+   height: 100vh;
+   position: relative;
+}
+
+.backgroundParent{
+   position: relative;
+}
+
+
+.backgroundParent img{
+   width: 100%;
+   
+}
+
+.backgroundTextContainer{
+
+   background-color: rgba(45, 42, 42,0.30);
+   position: absolute;
+   top: 2rem;
+   width: 60%;
+   text-align: left;
+   backdrop-filter: blur(5px);
+   border-radius: 15px;
+   left: 2rem;
+   padding: 1rem;
+}
+
+.description{
+   margin-bottom: 0;
+   color: white;
+   font-family: 'Inter';
+   font-weight: 300;
+   text-shadow:2px 2px 5px rgb(45 42 42 / 34%);
+   font-size: 1rem;
+   margin-top: 0.5rem;
+}
+
+.mainHeading{
+   color: white;
+   font-family: 'Inter';
+   font-weight: 500;
+   font-size: 1.6rem;
+}
+
+.formParent{
+   height: 20rem;
+   position: absolute;
+   top: 15rem;
+   left: 0;
+   right: 0;
+   margin: auto;
+   background-color: white;
+   width: 65%;
+   border-radius: 15px;
+   text-align: left;
+   padding: 1rem;
+   box-sizing: border-box;
+}
+
+.formTitle{
+   display: inline-block;
+   font-family: 'Inter';
+   font-weight: 300;
+   font-size: 1.6rem;
+   margin-left: 1rem;
+   margin-right: 1rem;
+}
+
+.ciParent{
+   position: absolute;
+   right: 0;
+   background-color: #2f923f;
+   width: 30%;
+   height: 100%;
+   top: 0;
+   border-radius: 0 15px 15px 0;
+   padding: 1rem;
+   box-sizing: border-box;
+}
+
+.ciTitle{
+   font-family: 'Inter';
+   font-size: 1.4rem;
+   font-weight: 300;
+   color: white;
+
+
+}
