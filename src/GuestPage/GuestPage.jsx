@@ -9,6 +9,7 @@ import Footer from "./Components/Footer/Footer";
 import Destinations from "./Components/MidArticle/Destinations";
 import TouristPlaces from "./Components/Activities/TouristPlaces";
 import VideoShower from "./Components/VideoContainer/VideoShower";
+import TestimonialSection from "./Components/Testinomials/TestimonialSection";
 
 const GuestPage = (props) => {
 	const [userLoggedIn, setUserLoggedIn] = useState(false);

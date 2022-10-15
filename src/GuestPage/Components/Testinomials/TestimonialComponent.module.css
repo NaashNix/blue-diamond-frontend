@@ -1,0 +1,71 @@
+.parent{
+   border-radius: 10px;
+   background-color: white;
+   width: 20rem;
+   height: 18rem;
+   border: 1px solid #8F8F8F;
+   padding: 1rem;
+   box-sizing: border-box;
+   margin: 1rem auto;
+   box-shadow: 1px 1px 11px 0px rgb(0 0 0 / 47%);
+}
+
+.imageContainer{
+   border-radius: 50%;
+   height: 5rem;
+   width: 5rem;
+   overflow: hidden;
+}
+
+.imageContainer img{
+   width: 100%;
+}
+
+.nameContainer{
+   margin-left: 1rem;
+   text-align: left;
+
+}
+
+.name{
+   font-family: 'Inter';
+   font-weight: 800;
+   color: #4F4F4F;
+   font-size: 1.4rem;
+   display: block;
+}
+
+.address{
+   font-family: 'Inter';
+   font-size: 1.2rem;
+   font-weight: 300;
+   color: #8A8383;
+}
+
+.headingContainer{
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+}
+
+.customerComment{
+   text-indent: 50px;
+   font-family: 'Caveat';
+   font-weight: 400;
+   text-align: justify;
+   font-size: 1.3rem;
+   margin-top: 0;
+}
+
+.customerCommentContainer::-webkit-scrollbar {
+  display: none;
+}
+
+
+.customerCommentContainer{
+   margin-top: 1rem;
+   height: 10rem;
+   overflow-y: scroll;
+   scroll-behavior: smooth;
+   
+}

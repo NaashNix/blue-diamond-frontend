@@ -45,8 +45,6 @@ const LoginForm = () => {
 
 			const result = await response.json();
 
-			console.log('code : '+result.code);
-
 			if (result.code === 202) {
 				setError(false);
 				settingSessionStorage(result);
