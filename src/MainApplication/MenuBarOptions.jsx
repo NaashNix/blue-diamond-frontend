@@ -9,7 +9,7 @@ const MenuBarOptions = (props) => {
 	return (
 		<div className={classes.parent}>
 			<a className={classes.links}>Rooms</a>
-			<a className={classes.links} onClick={props.onClick}>
+			<a className={classes.links} onClick={() => history.push('gallery')}>
 				Gallery
 			</a>
 			<a className={classes.links} onClick={props.onClick}>
